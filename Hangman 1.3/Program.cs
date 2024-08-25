@@ -23,7 +23,7 @@
             Console.WriteLine("\nChosen word is: " + new string(hiddenWord));
             Console.WriteLine("Remaining chances: " + Chances);
             Console.WriteLine("Ok, now, guess a letter");
-            //Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("\n");
 
             while (Chances > 0)
@@ -31,7 +31,7 @@
             {
                 char Guess = Console.ReadKey().KeyChar;
 
-                //List
+                List<char> AlreadyGuessedLetters = new List<char>();
 
 
                 if (WordToGUess.Contains(Guess))
@@ -45,6 +45,7 @@
                             hiddenWord[i] = Guess;
                         }
                     }
+
                     Console.WriteLine("\n");
                     Console.WriteLine(hiddenWord);
                     Console.WriteLine("nice one, let`s go");
@@ -56,9 +57,14 @@
                     Chances--;
                     Console.WriteLine("\nWrong Letter, try another");
                     Console.WriteLine("Remaining chances: " + Chances);
+                    AlreadyGuessedLetters.Add(Guess);
+                   
+
+                    if (AlreadyGuessedLetters.Contains(Guess))
+                    {
+                     Console.WriteLine("You guessed that one already");
+                    }
                 }
-
-
             }
         }
     }
