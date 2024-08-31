@@ -9,8 +9,6 @@
             string[] Words = { "aircraft", "bootcamp", "pizzeria" };
             Random random = new Random();
             string WordToGUess = Words[random.Next(Words.Length)];
-            //char[] GuessWord = new string('_', WordToGUess.Length).ToCharArray();
-            //bool WordGuessed = true;
 
             char[] hiddenWord = new char[WordToGUess.Length];
 
@@ -25,14 +23,25 @@
             Console.WriteLine("Ok, now, guess a letter");
             Console.WriteLine();
             Console.WriteLine("\n");
+            List<char> WrongLettersGuessed = new List<char>();
+            List<char> LettersGuessed = new List<char>();
+           
 
             while (Chances > 0)
 
             {
                 char Guess = Console.ReadKey().KeyChar;
 
-                List<char> AlreadyGuessedLetters = new List<char>();
+                
 
+                //if already exists
+                //else -> the user hasn't provided this leetter before
+                if (WrongLettersGuessed.Contains(Guess))
+                {
+                    Console.WriteLine("\nYou guessed that one already");
+                    continue;
+                }
+               
 
                 if (WordToGUess.Contains(Guess))
                 {
@@ -50,22 +59,30 @@
                     Console.WriteLine(hiddenWord);
                     Console.WriteLine("nice one, let`s go");
                     Console.WriteLine("\n");
+                    LettersGuessed.Add(Guess);
                 }
 
                 else
                 {
+                  
                     Chances--;
                     Console.WriteLine("\nWrong Letter, try another");
-                    Console.WriteLine("Remaining chances: " + Chances);
-                    AlreadyGuessedLetters.Add(Guess);
-                   
+                    Console.WriteLine("Remaining chances: " + Chances + "\n");
+                    WrongLettersGuessed.Add(Guess);
 
-                    if (AlreadyGuessedLetters.Contains(Guess))
-                    {
-                     Console.WriteLine("You guessed that one already");
-                    }
-                }
+                }  
             }
+            //if (new string (LettersGuessed) == WordToGUess) 
+            //{
+               // Console.WriteLine("Well done mate, you got the word right!" + WordToGUess);
+               
+           // }
+
+            if (Chances==0) 
+            {
+                Console.WriteLine("Ooops...You run out of chances, you are HANG. hehe. \n");
+            }
+            
         }
     }
 }
