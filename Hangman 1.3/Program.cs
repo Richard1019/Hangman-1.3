@@ -25,14 +25,19 @@
             Console.WriteLine("\n");
             List<char> WrongLettersGuessed = new List<char>();
             List<char> LettersGuessed = new List<char>();
-           
+
+
 
             while (Chances > 0)
 
             {
                 char Guess = Console.ReadKey().KeyChar;
 
-                
+                if (!char.IsLetter(Guess))
+                {
+                    Console.WriteLine("Invalid input. Please enter a letter of the alphabet.");
+                    continue;
+                }
 
                 //if already exists
                 //else -> the user hasn't provided this leetter before
@@ -41,7 +46,7 @@
                     Console.WriteLine("\nYou guessed that one already");
                     continue;
                 }
-               
+
 
                 if (WordToGUess.Contains(Guess))
                 {
@@ -64,26 +69,27 @@
 
                 else
                 {
-                  
+
                     Chances--;
                     Console.WriteLine("\nWrong Letter, try another");
                     Console.WriteLine("Remaining chances: " + Chances + "\n");
                     WrongLettersGuessed.Add(Guess);
 
-                }  
+                }
             }
-            //if (new string (LettersGuessed) == WordToGUess) 
+            
+           // if (new string(LettersGuessed) == WordToGUess)
             //{
                // Console.WriteLine("Well done mate, you got the word right!" + WordToGUess);
-               
-           // }
 
-            
-            if (Chances==0) 
+            //}
+
+
+            if (Chances == 0)
             {
                 Console.WriteLine("Ooops...You run out of chances, you are HANG. hehe. \n");
             }
-            
+
         }
     }
 }
