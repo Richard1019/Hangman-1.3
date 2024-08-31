@@ -78,6 +78,7 @@
                
            // }
 
+            
             if (Chances==0) 
             {
                 Console.WriteLine("Ooops...You run out of chances, you are HANG. hehe. \n");
