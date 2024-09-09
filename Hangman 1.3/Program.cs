@@ -1,4 +1,6 @@
-﻿namespace Hangman_1._3
+﻿using System.Collections.Frozen;
+
+namespace Hangman_1._3
 {
     internal class Program
     {
@@ -28,7 +30,6 @@
 
 
             while (Chances > 0)
-
             {
                 char Guess = Console.ReadKey().KeyChar;
 
@@ -43,6 +44,7 @@
                     Console.WriteLine("\nYou guessed that one already");
                     continue;
                 }
+
                 if (LettersGuessed.Contains(Guess))
                 {
                     Console.WriteLine("\nYou guessed that one already");
@@ -65,28 +67,27 @@
                     Console.WriteLine("\n");
                     LettersGuessed.Add(Guess);
                 }
-
                 else
                 {
-
                     Chances--;
                     Console.WriteLine("\nWrong Letter, try another");
                     Console.WriteLine("Remaining chances: " + Chances + "\n");
                     WrongLettersGuessed.Add(Guess);
-
                 }
 
-            }
-                //if (new string(hiddenWord) == WordToGUess) ;
-                //{
-                    //Console.WriteLine("Well done mate, you got the word right!" + WordToGUess);
-                    //return;
-                //}
-            
-                if (Chances == 0)
+             
+
+                if (new string(hiddenWord) == WordToGUess) 
                 {
-                Console.WriteLine("Ooops...You run out of chances, you are HANG. hehe. \n");
+                    Console.WriteLine("Well done mate, you got the word right! " + WordToGUess);
+                    return;
                 }
+            }
+
+            if (Chances == 0)
+            {
+                Console.WriteLine("Ooops...You run out of chances, you are HANG. hehe. \n");
+            }
         }
     }
 }
