@@ -10,9 +10,9 @@ namespace Hangman_1._3
             int Chances = NUMBER_OF_CHANCES;
             string[] Words = { "aircraft", "bootcamp", "pizzeria" };
             Random random = new Random();
-            string WordToGUess = Words[random.Next(Words.Length)];
+            string wordToGuess = Words[random.Next(Words.Length)];
 
-            char[] hiddenWord = new char[WordToGUess.Length];
+            char[] hiddenWord = new char[wordToGuess.Length];
 
             for (int i = 0; i < hiddenWord.Length; i++)
             {
@@ -22,12 +22,19 @@ namespace Hangman_1._3
             Console.WriteLine("Hello, let us play some Hangman \nI`m gonna choose a word, you try to guess it by choosing letters.");
             Console.WriteLine("\nChosen word is: " + new string(hiddenWord));
             //TODO for loop for the underscore spaces
+
+            for (int i = 0; i < hiddenWord.Length; i++)
+            {
+                Console.Write(" _");
+                
+            }
+
             Console.WriteLine("Remaining chances: " + Chances);
             Console.WriteLine("Ok, now, guess a letter");
             Console.WriteLine();
             Console.WriteLine("\n");
-            List<char> WrongLettersGuessed = new List<char>();
-            List<char> LettersGuessed = new List<char>();
+            List<char> wrongLettersGuessed = new List<char>();
+            List<char> lettersGuessed = new List<char>();
 
 
             while (Chances > 0)
@@ -40,23 +47,23 @@ namespace Hangman_1._3
                     continue;
                 }
 
-                if (WrongLettersGuessed.Contains(Guess))
+                if (wrongLettersGuessed.Contains(Guess))
                 {
                     Console.WriteLine("\nYou guessed that one already");
                     continue;
                 }
 
-                if (LettersGuessed.Contains(Guess))
+                if (lettersGuessed.Contains(Guess))
                 {
                     Console.WriteLine("\nYou guessed that one already");
                     continue;
                 }
 
-                if (WordToGUess.Contains(Guess))
+                if (wordToGuess.Contains(Guess))
                 {
-                    for (int i = 0; i < WordToGUess.Length; i++)
+                    for (int i = 0; i < wordToGuess.Length; i++)
                     {
-                        if (WordToGUess[i] == Guess)
+                        if (wordToGuess[i] == Guess)
                         {
                             hiddenWord[i] = Guess;
                         }
@@ -66,21 +73,21 @@ namespace Hangman_1._3
                     Console.WriteLine(hiddenWord);
                     Console.WriteLine("nice one, let`s go");
                     Console.WriteLine("\n");
-                    LettersGuessed.Add(Guess);
+                    lettersGuessed.Add(Guess);
                 }
                 else
                 {
                     Chances--;
                     Console.WriteLine("\nWrong Letter, try another");
                     Console.WriteLine("Remaining chances: " + Chances + "\n");
-                    WrongLettersGuessed.Add(Guess);
+                    wrongLettersGuessed.Add(Guess);
                 }
 
              
 
-                if (new string(hiddenWord) == WordToGUess) 
+                if (new string(hiddenWord) == wordToGuess) 
                 {
-                    Console.WriteLine("Well done mate, you got the word right! " + WordToGUess.ToUpper());
+                    Console.WriteLine("Well done mate, you got the word right! " + wordToGuess.ToUpper());
                     break;
                 }
             }
