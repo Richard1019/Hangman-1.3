@@ -18,9 +18,10 @@ namespace Hangman_1._3
             {
                 hiddenWord[i] = '_';
             }
-
+            
             Console.WriteLine("Hello, let us play some Hangman \nI`m gonna choose a word, you try to guess it by choosing letters.");
             Console.WriteLine("\nChosen word is: " + new string(hiddenWord));
+            //TODO for loop for the underscore spaces
             Console.WriteLine("Remaining chances: " + Chances);
             Console.WriteLine("Ok, now, guess a letter");
             Console.WriteLine();
@@ -79,12 +80,12 @@ namespace Hangman_1._3
 
                 if (new string(hiddenWord) == WordToGUess) 
                 {
-                    Console.WriteLine("Well done mate, you got the word right! " + WordToGUess);
-                    return;
+                    Console.WriteLine("Well done mate, you got the word right! " + WordToGUess.ToUpper());
+                    break;
                 }
             }
 
-            if (Chances == 0)
+            if (Chances == 0) 
             {
                 Console.WriteLine("Ooops...You run out of chances, you are HANG. hehe. \n");
             }
