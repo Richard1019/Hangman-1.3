@@ -20,8 +20,7 @@ namespace Hangman_1._3
             }
             
             Console.WriteLine("Hello, let us play some Hangman \nI`m gonna choose a word, you try to guess it by choosing letters.");
-            Console.WriteLine("\nChosen word is: " + new string(hiddenWord));
-            //TODO for loop for the underscore spaces
+            Console.WriteLine("\nChosen word is: ");
 
             for (int i = 0; i < hiddenWord.Length; i++)
             {
@@ -29,6 +28,7 @@ namespace Hangman_1._3
                 
             }
 
+            Console.WriteLine("\n");
             Console.WriteLine("Remaining chances: " + Chances);
             Console.WriteLine("Ok, now, guess a letter");
             Console.WriteLine();
